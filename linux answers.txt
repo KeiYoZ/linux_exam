@@ -1,0 +1,45 @@
+1. How to  check the current load of server
+    - "uptime"
+2. What is nginx -t and apachectl -S ?
+    - nginx -t command is used to test the configuration file. NGINX checks the configuration for correct syntax and then try to open files referred in config.
+    - apachectl -S command is used to show thw settings as parsed from the config file (currently shows the virtualhost settings)
+3. Check current swap usage
+    - "free -m"
+4. Create a vhost config that will handle http and https traffic under apache
+    4.1 Lets say that the directory is /home/test/ as home directory
+    4.2 SSL certs is under /etc/apache2/SSL/test/
+    4.3 Steps on how to test if vhost is working
+        4.3.1 saying that the apache conf is at /etc/apache2/sites-available/ & /etc/apache2/sites-enable/
+5. Create a vhost config that will handle http and https traffic under apache
+    5.1 Lets say that the directory is /home/test/ as home directory
+    5.2 SSL certs is under /etc/nginx/SSL/test/
+    5.3 Steps on how to test if vhost is working
+        5.3.1 saying that the apache conf is at /etc/nginx/sites-available/ & /etc/nginx/sites-enable/
+
+Steps for number 4
+1. go inside the folder mentioned
+2. copy one of the default.conf or create a new conf file
+3. open your conf file
+4. put your own configuration
+5. do httpd -t or apachectl -S or apache2ctl -S to check for syntax errors
+6. disable the default conf - "sudo a2dissite <name of default vhost file>"
+7. enable the vhosts conf we have created - "sudo a2ensite <name of vhost file>" 
+8. restart apache services
+9. go to your hosts file
+10. open the host file
+11. add your website and its ip
+12. got your browser and type in to your website using your url or the ip
+
+Steps for number 5
+1. go inside sites-available folder
+2. copy one of the default.conf or create a new conf file
+3. open your conf file
+4. put your own configuration
+5. do nginx -t to check for syntax errors
+6. disable the default conf - "rm <path to default vhost file>"
+7. enable the vhosts conf we have created through symlink - "ln -s <path to own vhost file> <path to sites-enabled>" 
+8. restart nginx service
+9. go to your hosts file
+10. open the host file
+11. add your website and its ip
+12. got your browser and type in to your website using your url or the ip
